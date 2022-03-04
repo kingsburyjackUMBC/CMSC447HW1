@@ -1,0 +1,25 @@
+{% block content %}
+
+    <h1>Info List:</h1>
+    <br/>
+    <form method = "POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+
+        {{ form.name(class="form-control") }}
+
+        {{ form.delete() }}
+        <br/>
+    </form>
+
+<br/><br/><br/>
+
+{% for our_user in our_table %}
+
+    {{ our_user.name }} - {{ our_user.id }} - {{ our_user.points }}<br/>
+
+{% endfor %}
+
+
+{% endblock %}

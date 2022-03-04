@@ -1,0 +1,49 @@
+{% block content %}
+
+    <h1>Info List:</h1>
+    <br/>
+    <form method = "POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+
+        {{ form.name(class="form-control") }}
+        <br/>
+
+        {{ form.id.label(class="form-label") }}
+
+        {{ form.id(class="form-control") }}
+        <br/>
+
+        {{ form.points.label(class="form-label") }}
+
+        {{ form.points(class="form-control") }}
+
+        {{ form.update() }}
+        <br/>
+    </form>
+
+<br/><br/><br/>
+
+
+<table>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Points</th>
+      <th></th>
+      <th></th>
+    </tr>
+    
+    {% for our_user in our_table %}
+        <tr>
+        <td> {{ our_user.name }} </td>
+        <td> {{ our_user.id }} </td>
+        <td> {{ our_user.points }} </td>
+        <td> <a href = "{{ url_for('delete_info', id = our_user.id) }}">Delete</a> </td>
+        <td> <a href = "{{ url_for('update_info', id = our_user.id) }}">Edit</a> </td>
+        </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
